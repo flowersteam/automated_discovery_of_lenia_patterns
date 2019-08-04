@@ -1,0 +1,4 @@
+from autodisc.explorers.randomexplorer import RandomExplorer
+from autodisc.explorers.goalspaceexplorer import GoalSpaceExplorer
+from autodisc.explorers.goalspacedensityexplorer import GoalSpaceDensityExplorer
+from autodisc.explorers.onlinelearninggoalexplorer import OnlineLearningGoalExplorer

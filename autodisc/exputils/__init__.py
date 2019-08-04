@@ -1,0 +1,9 @@
+from exputils.experimentgenerator import generate_experiment_files
+from exputils.statisticcalculator import calc_experiment_statistics
+from exputils.statisticcalculator import calc_statistics_over_repetitions
+from exputils.experimentstarter import start_experiments
+from exputils.experimentstarter import start_slurm_experiments
+from exputils.experimentstarter import start_torque_experiments
+import exputils.misc
+
+__version__ = '0.0.9'
