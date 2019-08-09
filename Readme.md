@@ -14,9 +14,15 @@ Contact us for questions or comments: chris.reinke@inria.fr
 
 ## Installation
 
+First, clone this repository with
+```
+git clone https://github.com/flowersteam/automated_discovery_of_lenia_patterns.git
+```
+Note that you need the Git Large File Storage (LFS) extension (https://git-lfs.github.com/) for downloading the trained VAE models (optional).
+
 We provide 2 options to install and run the experiments:
 1. Docker environment [Recommended]
-1. Installation into a conda environment
+2. Installation into a conda environment
 
 
 ### Docker environment
@@ -137,7 +143,9 @@ Experiments run in 2 phases. First, by running the explorations with several rep
    `./run_local_calc_statistic_space_representation.sh`  
          (or if on a SLURM cluster: `./run_slurm_calc_statistic_space_representation.sh` ) 
 
-5. After the statistics are calculated, the Jupyter notebooks in the *analyze* directory can be used to view the results.
+5. After the statistics are calculated, the Jupyter notebooks in the *analyze* directory can be used to view the results. 
+The *make_pdf_figures_\*.ipynb* notebooks provide source code to generate all the figures shown in the paper.
+The *interactive_visualisation_obtained_goalspaces.ipynb* notebook provides an interactive viewer tool to explore the found patterns during the different IMGEP experiments. A video with demonstration of the interface can be found on the website.
 
 ### 3. post_train_analytic_behavior_space (optional) 
 
