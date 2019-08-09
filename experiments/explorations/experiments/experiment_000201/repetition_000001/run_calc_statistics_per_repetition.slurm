@@ -1,12 +1,11 @@
 #!/bin/bash
 
 #SBATCH --ntasks=1
-#SBATCH --mem=40G
+#SBATCH --cpus-per-task=1
 #SBATCH --partition=inria
+#SBATCH --mem-per-cpu=20G
 #SBATCH --time=24:00:00
 #SBATCH --input=none
-#SBATCH -o logs/stat_console.out
-#SBATCH -e logs/stat_error.out
 
 STATUSFILE=run_calc_statistics_per_repetition.slurm.status
 
@@ -36,4 +35,3 @@ date "+%Y/%m/%d %H:%M:%S" >> $STATUSFILE
 echo $STATE >> $STATUSFILE
 
 echo "Finished."
-

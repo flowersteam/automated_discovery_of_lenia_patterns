@@ -1,12 +1,11 @@
 #!/bin/bash
 
 #SBATCH --ntasks=1
-#SBATCH --mem=40G
+#SBATCH --gres=gpu:1
 #SBATCH --partition=gpu
+#SBATCH --mem=40G
 #SBATCH --time=24:00:00
 #SBATCH --input=none
-#SBATCH -o logs/stat_console.out
-#SBATCH -e logs/stat_error.out
 
 STATUSFILE=run_calc_statistics_per_repetition.slurm.status
 

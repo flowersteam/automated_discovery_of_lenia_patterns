@@ -1,9 +1,8 @@
 #!/bin/bash
 
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
+#SBATCH --mem=24G
 #SBATCH --partition=inria
-#SBATCH --mem-per-cpu=5G
 #SBATCH --time=24:00:00
 #SBATCH --input=none
 

@@ -86,19 +86,16 @@ class LatentSpaceViewerWidget(ipywidgets.Box):
                             opacity=1.0
                             )
         
-        ## colormap for markers
-        '''
-        default_config.marker_colorlist = ['rgb(0,0,0)', 'rgb(204,121,167)', 'rgb(0,114,178)', 
-                                  'rgb(230,159,0)', 'rgb(0,158,115)', 
-                                 'rgb(240,228,66)', 'rgb(213,94,0)', 'rgb(0,0,0)', 
-                                 'rgb(86,180,233)', 'rgb(0,158,115)', 'rgb(240,228,66)', 
-                                 'rgb(0,114,178)', 'rgb(213,94,0)', 'rgb(204,121,167)'
-                                 ]
-        '''
+        ## colors and symbols for markers
         default_config.marker_colorlist = dict()
         default_config.marker_colorlist['dead'] = 'rgb(0,0,0)'
-        default_config.marker_colorlist['animal'] = 'rgb(204,121,167)'
-        default_config.marker_colorlist['non-animal'] = 'rgb(0,114,178)'
+        default_config.marker_colorlist['animal'] = 'rgb(230,159,0)'
+        default_config.marker_colorlist['non-animal'] = 'rgb(0,158,115)'
+        
+        default_config.marker_symbollist = dict()
+        default_config.marker_symbollist['dead'] = 'circle'
+        default_config.marker_symbollist['animal'] = 'diamond'
+        default_config.marker_symbollist['non-animal'] = 'square'
         
         
         # Row 2: Image list widget for selected points
@@ -199,6 +196,7 @@ class LatentSpaceViewerWidget(ipywidgets.Box):
                                 y = ydata,
                                 **self.config.canvas_data)
                 self.canvas.data[filter_idx].marker.color = self.config.marker_colorlist[filter_id]
+                self.canvas.data[filter_idx].marker.symbol = self.config.marker_symbollist[filter_id]
                 self.canvas.data[filter_idx].name = filter_id
                 
                 self.canvas.data[filter_idx].on_selection(self.selection_fn)
@@ -211,6 +209,7 @@ class LatentSpaceViewerWidget(ipywidgets.Box):
                                 y = ydata,
                                 **self.config.canvas_data)
                 self.canvas.data[filter_idx].marker.color = self.config.marker_colorlist[filter_id]
+                self.canvas.data[filter_idx].marker.symbol = self.config.marker_symbollist[filter_id]
                 self.canvas.data[filter_idx].name = filter_id
                 
                 self.canvas.data[filter_idx].on_selection(self.selection_fn)
@@ -223,6 +222,7 @@ class LatentSpaceViewerWidget(ipywidgets.Box):
                                 y = ydata,
                                 **self.config.canvas_data)
                 self.canvas.data[filter_idx].marker.color = self.config.marker_colorlist[filter_id]
+                self.canvas.data[filter_idx].marker.symbol = self.config.marker_symbollist[filter_id]
                 self.canvas.data[filter_idx].name = filter_id
                 
                 self.canvas.data[filter_idx].on_selection(self.selection_fn)
@@ -236,7 +236,8 @@ class LatentSpaceViewerWidget(ipywidgets.Box):
                 self.canvas.add_scatter(x = xdata,
                                 y = ydata,
                                 **self.config.canvas_data)
-                self.canvas.data[filter_idx].marker.color = self.config.marker_colorlist[filter_idx % len(self.config.marker_colorlist)]
+                self.canvas.data[filter_idx].marker.color = self.config.marker_colorlist[filter_id]
+                self.canvas.data[filter_idx].marker.symbol = self.config.marker_symbollist[filter_id]
                 self.canvas.data[filter_idx].name = filter_id
                 
                 self.canvas.data[filter_idx].on_selection(self.selection_fn)
@@ -298,7 +299,7 @@ class PlotRepresentationSpaceWidget(ipywidgets.Box):
         return default_config
 
 
-    def __init__(self, experiment_definitions, repetition_ids, pca_data, umap_data, experiment_statistics=None, filters=None, config=None, **kwargs):
+    def __init__(self, experiment_definitions, repetition_ids, pca_data, tsne_data, umap_data, experiment_statistics=None, filters=None, config=None, **kwargs):
         # set config with priority for args in kwards -> config -> default_config
         self.config = ad.config.set_default_config(kwargs, config, PlotRepresentationSpaceWidget.get_default_gui_config())
 
@@ -306,6 +307,7 @@ class PlotRepresentationSpaceWidget(ipywidgets.Box):
         self.experiment_ids = [exp_def['id'] for exp_def in self.experiment_definitions]
         self.repetition_ids = repetition_ids
         self.pca_data = pca_data
+        self.tsne_data = tsne_data
         self.umap_data = umap_data
         self.experiment_statistics = experiment_statistics
         self.filters = filters
@@ -371,7 +373,7 @@ class PlotRepresentationSpaceWidget(ipywidgets.Box):
         for item_id in range(representations['n_runs']):
             self.database[item_id] = dict()
             self.database[item_id]['point'] = representations['coordinates_in_goal_space'][item_id]
-            self.database[item_id]['tsne_point'] = representations['coordinates_in_tsne_space'][item_id]
+            self.database[item_id]['tsne_point'] = self.tsne_data[exp_idx][repetition_id][item_id]
             self.database[item_id]['pca_point'] = self.pca_data[exp_idx][repetition_id][item_id]
             self.database[item_id]['umap_point'] = self.umap_data[exp_idx][repetition_id][item_id]
             

@@ -1,12 +1,11 @@
 #!/bin/bash
 
 #SBATCH --ntasks=1
-#SBATCH --mem=40G
+#SBATCH --cpus-per-task=1
 #SBATCH --partition=inria
-#SBATCH --time=72:00:00
+#SBATCH --mem=40G
+#SBATCH --time=24:00:00
 #SBATCH --input=none
-#SBATCH -o logs/console.out
-#SBATCH -e logs/error.out
 
 STATUSFILE=run_calc_statistics_over_repetitions.slurm.status
 
@@ -15,7 +14,7 @@ STATUSFILE=run_calc_statistics_over_repetitions.slurm.status
 #source ~/anaconda3/bin/activate autodisc
 
 
-echo "Run the experiment ..."
+echo "Run ..."
 STATE='Running'
 
 date "+%Y/%m/%d %H:%M:%S" >> $STATUSFILE

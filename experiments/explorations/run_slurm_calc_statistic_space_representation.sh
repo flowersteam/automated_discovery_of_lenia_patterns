@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Uncomment if needed on a cluster
+#echo "Activate autodisc conda environment ..."
+#source ~/anaconda3/bin/activate autodisc
+
 echo "Start experiments via slurm ..."
 python -c "import exputils
 exputils.start_slurm_experiments(directory='./experiments/', 

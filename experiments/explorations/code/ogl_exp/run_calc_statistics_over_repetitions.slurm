@@ -4,10 +4,8 @@
 #SBATCH --mem=40G
 #SBATCH --gres=gpu:1
 #SBATCH --partition=gpu
-#SBATCH --time=72:00:00
+#SBATCH --time=24:00:00
 #SBATCH --input=none
-#SBATCH -o logs/console.out
-#SBATCH -e logs/error.out
 
 STATUSFILE=run_calc_statistics_over_repetitions.slurm.status
 
@@ -15,7 +13,8 @@ STATUSFILE=run_calc_statistics_over_repetitions.slurm.status
 #echo "Activate autodisc conda environment ..."
 #source ~/anaconda3/bin/activate autodisc
 
-echo "Run the experiment ..."
+
+echo "Run ..."
 STATE='Running'
 
 date "+%Y/%m/%d %H:%M:%S" >> $STATUSFILE
@@ -36,3 +35,4 @@ date "+%Y/%m/%d %H:%M:%S" >> $STATUSFILE
 echo $STATE >> $STATUSFILE
 
 echo "Finished."
+

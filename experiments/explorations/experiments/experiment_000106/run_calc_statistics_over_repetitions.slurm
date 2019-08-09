@@ -6,7 +6,6 @@
 #SBATCH --mem=40G
 #SBATCH --time=24:00:00
 #SBATCH --input=none
-#SBATCH --input=none
 
 STATUSFILE=run_calc_statistics_over_repetitions.slurm.status
 
