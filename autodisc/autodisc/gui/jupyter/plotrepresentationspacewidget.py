@@ -370,9 +370,9 @@ class PlotRepresentationSpaceWidget(ipywidgets.Box):
             if len(subrepresentation_val.shape) == 0:
                 representations[subrepresentation_name] = subrepresentation_val.dtype.type(subrepresentation_val)
 
-        for item_id in range(representations['n_runs']):
+        for item_id in range(len(representations['gs_00'])):
             self.database[item_id] = dict()
-            self.database[item_id]['point'] = representations['coordinates_in_goal_space'][item_id]
+            self.database[item_id]['point'] = representations['gs_00'][item_id]
             self.database[item_id]['tsne_point'] = self.tsne_data[exp_idx][repetition_id][item_id]
             self.database[item_id]['pca_point'] = self.pca_data[exp_idx][repetition_id][item_id]
             self.database[item_id]['umap_point'] = self.umap_data[exp_idx][repetition_id][item_id]
