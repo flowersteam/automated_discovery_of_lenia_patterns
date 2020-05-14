@@ -5,7 +5,7 @@
 Python source code of experiments and data analysis for the paper: 
 
 **Intrinsically Motivated Exploration for Automated Discovery of Patterns in Morphogenetic Systems**  
-[Chris Reinke](http://www.scirei.net), Mayalen Echeverry, [Pierre-Yves Oudeyer](http://www.pyoudeyer.com)
+[Chris Reinke](http://www.scirei.net), [Mayalen Echeverry](https://mayalenetcheverry.com), [Pierre-Yves Oudeyer](http://www.pyoudeyer.com)
 
 More information: https://automated-discovery.github.io
 
